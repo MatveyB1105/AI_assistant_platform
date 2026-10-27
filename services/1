@@ -1,0 +1,10 @@
+# 1. Полностью закрой Docker Desktop: правый клик по киту в трее → Quit Docker Desktop
+# 2. Убей WSL-машину целиком (это сбросит её сетевой мост):
+wsl --shutdown
+# 3. Подожди ~10 секунд, запусти Docker Desktop заново и дождись, пока кит "успокоится"
+# 4. Подними контейнеры заново:
+docker compose up -d postgres qdrant
+# 5. Дождись healthy:
+docker compose ps
+# 6. Повтори тест:
+python -m uv run python db_ping.py
